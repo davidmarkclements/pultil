@@ -1,0 +1,25 @@
+{
+  "name": "pultil",
+  "version": "1.0.5",
+  "description": "pull-stream utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Mark Clements",
+  "license": "ISC",
+  "keywords": [
+    "pultil",
+    "pull-core",
+    "pull",
+    "pull-stream",
+    "stream",
+    "streams",
+    "utilities",
+    "util",
+    "pull stream utilities"
+  ],
+  "dependencies": {
+    "pull-core": "^1.0.0"
+  }
+}
