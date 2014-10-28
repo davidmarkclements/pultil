@@ -13,13 +13,13 @@ A `funnel` is a convenient way to create `pull.Sink` (a.k.a reader, a.k.a writab
 Generates least amount of code when browserified/webpacked
 
 ```javascript
-var tunnel = require('pultil/funnel');
+var funnel = require('pultil/funnel');
 ```
 
 #### Full package:
 
 ```javascript
-var tunnel = require('pultil').funnel;
+var funnel = require('pultil').funnel;
 ```
 
 ### Funnel API
@@ -53,6 +53,30 @@ var sink = funnel(function (data) {
 
 src().pipe(sink());
 ```
+
+The above could be created with the more advanced
+`wsps.Sink` stream factory (as inherited from `pull-stream`)
+
+```javascript
+var wsps = require('websocket-pull-stream')
+var ws = new WebSocket('ws://localhost:8081')
+
+var src = wsps(ws);
+
+var sink = wsps.Sink(function (read) {
+  read(null, function next (end, data) {
+    if (end) { return }
+    console.log(data);
+    read(null, next)
+  })
+})
+
+src().pipe(sink());
+```
+Evidently, `funnel` takes away much of the boiler plate
+involved with creating a `Sink` factory. We only need
+use `Sink` when `funnel` doesn't supply the required 
+flexibility. 
 
 
 ## Tunnel
